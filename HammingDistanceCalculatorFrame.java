@@ -61,9 +61,7 @@ public class HammingDistanceCalculatorFrame extends JFrame
 			 enterHDTextBox.setText(String.valueOf(enterHammingDistSlider.getValue()));
 		 });
 		 
-		 addStation.addActionListener((e) -> {			 
-			 stationDropDown.removeAllItems();
-			 
+		 addStation.addActionListener((e) -> {
 			 ArrayList<String> mesoStations = allStations.getStations();
 			 
 			 String textBox = addStationTextBox.getText().toUpperCase();
@@ -71,18 +69,20 @@ public class HammingDistanceCalculatorFrame extends JFrame
 			 			 
 			 if (!contained)
 			 {
+				 stationDropDown.removeAllItems();
+				 
 				 mesoStations.add(textBox);
 				 allStations.addStation(textBox);
-			 }
 			 
-			 Collections.sort(mesoStations);
-			 
-			 for (String current : mesoStations)
-			 {
-				 stationDropDown.addItem(current);
-			 }
-			 
-			 stationDropDown.setSelectedItem("NRMN");
+				 Collections.sort(mesoStations);
+				 
+				 for (String current : mesoStations)
+				 {
+					 stationDropDown.addItem(current);
+				 }
+				 
+				 stationDropDown.setSelectedItem("NRMN");
+			 }	 
 		 });
 		
 		 showHammingDistStations.addActionListener((e) -> {
