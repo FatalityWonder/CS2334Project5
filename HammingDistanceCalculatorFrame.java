@@ -1,6 +1,8 @@
 import java.awt.GridLayout;
+import java.util.Hashtable;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
@@ -36,7 +38,19 @@ public class HammingDistanceCalculatorFrame extends JFrame
 	
 	private void setSliderData() 
 	{
-		// TODO Auto-generated method stub
+		enterHammingDistSlider.setMinorTickSpacing(1);
+		enterHammingDistSlider.setMajorTickSpacing(1);
+		enterHammingDistSlider.setPaintTicks(true);
+		// create labels
+        Hashtable<Integer, JLabel> labels = new Hashtable<>();
+        labels.put(1, new JLabel("1"));
+        labels.put(2, new JLabel("2"));
+        labels.put(3, new JLabel("3"));
+        labels.put(4, new JLabel("4"));
+        
+        // turn on labels
+        enterHammingDistSlider.setLabelTable(labels);
+        enterHammingDistSlider.setPaintLabels(true);
 		
 	}
 
