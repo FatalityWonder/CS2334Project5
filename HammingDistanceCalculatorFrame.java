@@ -1,6 +1,7 @@
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
 
 import javax.swing.JButton;
@@ -60,9 +61,28 @@ public class HammingDistanceCalculatorFrame extends JFrame
 			 enterHDTextBox.setText(String.valueOf(enterHammingDistSlider.getValue()));
 		 });
 		 
-		 addStation.addActionListener((e) -> {
-			 allStations.addStation(addStationTextBox.getText());
-			 stationDropDown.addItem(addStationTextBox.getText());
+		 addStation.addActionListener((e) -> {			 
+			 stationDropDown.removeAllItems();
+			 
+			 ArrayList<String> mesoStations = allStations.getStations();
+			 
+			 String textBox = addStationTextBox.getText().toUpperCase();
+			 boolean contained = mesoStations.contains(textBox);
+			 			 
+			 if (!contained)
+			 {
+				 mesoStations.add(textBox);
+				 allStations.addStation(textBox);
+			 }
+			 
+			 Collections.sort(mesoStations);
+			 
+			 for (String current : mesoStations)
+			 {
+				 stationDropDown.addItem(current);
+			 }
+			 
+			 stationDropDown.setSelectedItem("NRMN");
 		 });
 		
 		 showHammingDistStations.addActionListener((e) -> {
