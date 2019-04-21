@@ -1,6 +1,6 @@
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 import javax.swing.JButton;
@@ -13,11 +13,13 @@ import javax.swing.JTextField;
 
 public class HammingDistanceCalculatorFrame extends JFrame
 {	
-	
+	private static final String FILE_NAME = "Mesonet.txt";
 	private static final int FRAME_WIDTH = 700;
 	private static final int FRAME_HEIGHT = 800;
 	
-	String[] stations = {"NRMN", "FELL", "HIKE"};
+	MesoStations allStations = new MesoStations(FILE_NAME);
+	
+	String[] stations = arrayListToArray(allStations.getStations());
 	
 	JPanel sliderShowStation = new JPanel(new GridLayout(3, 1)) {public Insets getInsets() {return new Insets(15, 15, 15, 15);}};
 	JPanel compareAdd = new JPanel(new GridLayout(3, 1));
@@ -44,7 +46,7 @@ public class HammingDistanceCalculatorFrame extends JFrame
 		addComponentsToPanels();
 		setSliderData();
 		setComponentData();
-		
+			
 		this.add(sliderShowStation);
 		this.add(compareAdd);
 		
@@ -55,6 +57,11 @@ public class HammingDistanceCalculatorFrame extends JFrame
 		 enterHammingDistSlider.addChangeListener((e) -> {
 			 enterHDTextBox.setText(String.valueOf(enterHammingDistSlider.getValue()));
 		 });
+		 
+		 addStation.addActionListener((e) -> {
+			 allStations.addStation(addStationTextBox.getText());
+			 stations = arrayListToArray(allStations.getStations());
+		 });
 		
 		this.pack();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,9 +69,21 @@ public class HammingDistanceCalculatorFrame extends JFrame
         
 	}
 	
+	private String[] arrayListToArray(ArrayList<String> arrayList) 
+	{
+		String[] stations = new String[arrayList.size()];
+		for	(int i = 0; i < arrayList.size(); ++i)
+		{
+			stations[i] = arrayList.get(i);
+		}
+		
+		return stations;
+	}
+
 	private void setComponentData() 
 	{
-		enterHDTextBox.setEditable(false);	
+		enterHDTextBox.setEditable(false);
+		stationDropDown.setSelectedItem("NRMN");
 	}
 
 	private void addComponentsToPanels() 

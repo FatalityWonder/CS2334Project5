@@ -35,6 +35,7 @@ public class CalculateHammingDistanceFrame extends JFrame
 		
 		addLabelsAndText();
 		
+		
 		this.add(main);
 		
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);

@@ -10,14 +10,14 @@ public class MesoStations
 	
 	public  MesoStations(String fileName)
 	{
+		this.fileName = fileName;
+		
 		try {
-			stations = getStationsFromFile();
+			stations = this.getStationsFromFile();
 		} catch (IOException e) {
 			System.out.println("Error Reading File!");
 			e.printStackTrace();
 		}
-		
-		this.fileName = fileName;
 	}
 
 	private ArrayList<String> getStationsFromFile() throws IOException 
@@ -25,7 +25,7 @@ public class MesoStations
 		// oversize to allow for more stations to be added before resizing, original file has 120 stations
 		ArrayList<String> stations = new ArrayList<String>(140);
 		
-		BufferedReader br = new BufferedReader(new FileReader(this.fileName));
+		BufferedReader br = new BufferedReader(new FileReader(fileName));
 				
 		String currLine = "";
 		while ((currLine = br.readLine()) != null)
