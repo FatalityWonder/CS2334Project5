@@ -66,7 +66,9 @@ public class HammingDistanceCalculatorFrame extends JFrame
 		 });
 		
 		 showHammingDistStations.addActionListener((e) -> {
-			 
+			 HammingDist hamming = new HammingDist(allStations, stationDropDown.getSelectedItem().toString());
+			 ArrayList<String> showStationByDistance = hamming.getDistanceArray(enterHammingDistSlider.getValue());
+			 new ShowStationByDistanceFrame(showStationByDistance, enterHammingDistSlider.getValue());
 		 });
 		 
 		this.pack();
@@ -96,6 +98,7 @@ public class HammingDistanceCalculatorFrame extends JFrame
 	{		
 		sliderShowStation.add(enterDistBox);
 		sliderShowStation.add(enterHammingDistSlider);
+		sliderShowStation.add(showHammingDistStations);
 		
 		enterDistBox.add(enterHammingDist);
 		enterDistBox.add(enterHDTextBox);

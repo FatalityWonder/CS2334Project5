@@ -6,7 +6,6 @@ public class HammingDist
 	private String StID;
 	private MesoStations meso;
 	
-	private ArrayList<String> distance0;
 	private ArrayList<String> distance1;
 	private ArrayList<String> distance2;
 	private ArrayList<String> distance3;
@@ -16,7 +15,6 @@ public class HammingDist
 	
 	public HammingDist(MesoStations meso, String StID)
 	{
-		distance0 = new ArrayList<String>();
 		distance1 = new ArrayList<String>();
 		distance2 = new ArrayList<String>();
 		distance3 = new ArrayList<String>();
@@ -48,7 +46,6 @@ public class HammingDist
 		switch (currDist)
 		{
 			case 0:
-				distance0.add(currStation);
 				break;
 				
 			case 1:
@@ -92,34 +89,35 @@ public class HammingDist
 		return distance;
 	}
 
-	public ArrayList<String> getDistance0() 
-	{
-		return new ArrayList<String>(distance0);
-	}
-
-	public ArrayList<String> getDistance1() 
-	{
-		return new ArrayList<String>(distance1);
-	}
-
-	public ArrayList<String> getDistance2() 
-	{
-		return new ArrayList<String>(distance2);
-	}
-
-	public ArrayList<String> getDistance3() 
-	{
-		return new ArrayList<String>(distance3);
-	}
-
-	public ArrayList<String> getDistance4() 
-	{
-		return new ArrayList<String>(distance4);
-	}
-
 	public int[] getNumDist() 
 	{
 		return Arrays.copyOf(numDist, numDist.length);
+	}
+
+	public ArrayList<String> getDistanceArray(int value) 
+	{
+		ArrayList<String> distanceNow = new ArrayList<String>();
+		
+		switch(value)
+		{
+			case 1:
+				distanceNow = new ArrayList<String>(distance1);
+				break;
+				
+			case 2:
+				distanceNow = new ArrayList<String>(distance2);
+				break;
+				
+			case 3:
+				distanceNow = new ArrayList<String>(distance3);
+				break;
+				
+			case 4:
+				distanceNow = new ArrayList<String>(distance4);
+				break;
+		}
+		
+		return distanceNow;
 	}
 	
 	
