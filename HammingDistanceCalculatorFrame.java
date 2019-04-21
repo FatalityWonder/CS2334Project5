@@ -35,6 +35,7 @@ public class HammingDistanceCalculatorFrame extends JFrame
 	JComboBox<String> stationDropDown = new JComboBox<String>(stations);
 	JButton calculateHammingDist = new JButton("Calculate HD");
 	JButton addStation = new JButton("Add Station");
+	JButton showHammingDistStations = new JButton("Show Station");
 	
 	public HammingDistanceCalculatorFrame()
 	{
@@ -51,7 +52,8 @@ public class HammingDistanceCalculatorFrame extends JFrame
 		this.add(compareAdd);
 		
 		 calculateHammingDist.addActionListener((e) -> {
-			 new CalculateHammingDistanceFrame();
+			 int[] distances = new HammingDist(allStations, stationDropDown.getSelectedItem().toString()).getNumDist();
+			 new CalculateHammingDistanceFrame(distances);
 		 });		 
 		 
 		 enterHammingDistSlider.addChangeListener((e) -> {
@@ -60,9 +62,13 @@ public class HammingDistanceCalculatorFrame extends JFrame
 		 
 		 addStation.addActionListener((e) -> {
 			 allStations.addStation(addStationTextBox.getText());
-			 stations = arrayListToArray(allStations.getStations());
+			 stationDropDown.addItem(addStationTextBox.getText());
 		 });
 		
+		 showHammingDistStations.addActionListener((e) -> {
+			 
+		 });
+		 
 		this.pack();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);

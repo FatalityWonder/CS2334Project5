@@ -27,7 +27,7 @@ public class CalculateHammingDistanceFrame extends JFrame
 	JTextField distance3Text = new JTextField("0");
 	JTextField distance4Text = new JTextField("0");
 	
-	public CalculateHammingDistanceFrame()
+	public CalculateHammingDistanceFrame(int[] allDistances)
 	{
 		super("Hamming Distances");
 		this.setSize(300, 200);
@@ -35,6 +35,11 @@ public class CalculateHammingDistanceFrame extends JFrame
 		
 		addLabelsAndText();
 		
+		distance0Text.setText(String.valueOf(allDistances[0]));
+		distance1Text.setText(String.valueOf(allDistances[1]));
+		distance2Text.setText(String.valueOf(allDistances[2]));
+		distance3Text.setText(String.valueOf(allDistances[3]));
+		distance4Text.setText(String.valueOf(allDistances[4]));
 		
 		this.add(main);
 		
@@ -61,7 +66,7 @@ public class CalculateHammingDistanceFrame extends JFrame
 		distance2.add(distance2Text);
 		distance3.add(distance3Text);
 		distance4.add(distance4Text);
-		
+			
 		distance0Text.setEditable(false);
 		distance1Text.setEditable(false);
 		distance2Text.setEditable(false);
