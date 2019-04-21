@@ -4,6 +4,7 @@ import java.awt.Insets;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class CalculateHammingDistanceFrame extends JFrame 
 {
@@ -20,10 +21,16 @@ public class CalculateHammingDistanceFrame extends JFrame
 	JLabel distance3Label = new JLabel("Distance 3");
 	JLabel distance4Label = new JLabel("Distance 4");
 	
+	JTextField distance0Text = new JTextField("0");
+	JTextField distance1Text = new JTextField("0");
+	JTextField distance2Text = new JTextField("0");
+	JTextField distance3Text = new JTextField("0");
+	JTextField distance4Text = new JTextField("0");
+	
 	public CalculateHammingDistanceFrame()
 	{
 		super("Hamming Distances");
-		this.setSize(300, 400);
+		this.setSize(300, 200);
 		this.setLayout(new GridLayout(1, 1));
 		
 		addLabelsAndText();
@@ -48,5 +55,16 @@ public class CalculateHammingDistanceFrame extends JFrame
 		distance3.add(distance3Label);
 		distance4.add(distance4Label);
 		
+		distance0.add(distance0Text);
+		distance1.add(distance1Text);
+		distance2.add(distance2Text);
+		distance3.add(distance3Text);
+		distance4.add(distance4Text);
+		
+		distance0Text.setEditable(false);
+		distance1Text.setEditable(false);
+		distance2Text.setEditable(false);
+		distance3Text.setEditable(false);
+		distance4Text.setEditable(false);
 	}
 }
