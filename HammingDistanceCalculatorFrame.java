@@ -22,9 +22,11 @@ public class HammingDistanceCalculatorFrame extends JFrame
 	JPanel sliderShowStation = new JPanel(new GridLayout(3, 1)) {public Insets getInsets() {return new Insets(15, 15, 15, 15);}};
 	JPanel compareAdd = new JPanel(new GridLayout(3, 1));
 	JPanel enterDistBox = new JPanel(new GridLayout(1, 2));
+	JPanel compareWith = new JPanel(new GridLayout(1, 2));
 	
 	JSlider enterHammingDistSlider = new JSlider(1, 4, 2);
 	JLabel enterHammingDist = new JLabel("Enter Hamming Dist:");
+	JLabel compareWithLabel = new JLabel("Compare With: ");
 	JTextField enterHDTextBox = new JTextField("2");
 	JComboBox<String> stationDropDown = new JComboBox<String>(stations);
 	JButton calculateHammingDist = new JButton("Calculate HD");
@@ -71,9 +73,12 @@ public class HammingDistanceCalculatorFrame extends JFrame
 		enterDistBox.add(enterHammingDist);
 		enterDistBox.add(enterHDTextBox);
 		
-		compareAdd.add(stationDropDown);
+		compareAdd.add(compareWith);
 		compareAdd.add(calculateHammingDist);
 		compareAdd.add(addStation);
+		
+		compareWith.add(compareWithLabel);
+		compareWith.add(stationDropDown);
 	}
 
 	private void setSliderData() 
