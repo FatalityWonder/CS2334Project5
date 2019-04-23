@@ -55,7 +55,8 @@ public class HammingDistanceCalculatorFrame extends JFrame
 	JPanel compareWith = new JPanel(new GridLayout(1, 2));
 	// contains Button and Text Field to add station
 	JPanel addStationBox = new JPanel(new GridLayout(1, 2));
-	
+	// contains JLabel and JButton for creative action
+	JPanel beCreative = new JPanel(new GridLayout(2, 1)) {public Insets getInsets() {return new Insets(15, 15, 15, 15);}};
 
 	//================================================================================================================
 	// Components for Operation
@@ -67,6 +68,8 @@ public class HammingDistanceCalculatorFrame extends JFrame
 	JLabel enterHammingDist = new JLabel("Enter Hamming Dist:");
 	// Label for the Dropdown menu to select which Station to get hamming distance for
 	JLabel compareWithLabel = new JLabel("Compare With: ");
+	// Label for the Do it Button
+	JLabel doSomethingCreative = new JLabel("Do Something Creative!!");
 	// Text Field for the current value on the slider, with default value 2
 	JTextField enterHDTextBox = new JTextField("2");
 	// Text box to enter station to add, default text is "ZERO"
@@ -79,6 +82,8 @@ public class HammingDistanceCalculatorFrame extends JFrame
 	JButton addStation = new JButton("Add Station");
 	// Button to show all stations with selected distance on slider with the selected station on the dropdown
 	JButton showHammingDistStations = new JButton("Show Station");
+	// Button that does something creative
+	JButton doSomething = new JButton("Do it!");
 	
 	/**
 	 * Constructs GUI components for the Hamming Distance Calculator. Has the ability to add new stations, compare all stations in
@@ -98,6 +103,7 @@ public class HammingDistanceCalculatorFrame extends JFrame
 			
 		this.add(sliderShowStation);
 		this.add(compareAdd);
+		this.add(beCreative);
 		
 		// check if calculate HD was clicked, and then create new frame with hamming distances
 		 calculateHammingDist.addActionListener((e) -> {
@@ -145,6 +151,11 @@ public class HammingDistanceCalculatorFrame extends JFrame
 			 HammingDist hamming = new HammingDist(allStations, stationDropDown.getSelectedItem().toString());
 			 ArrayList<String> showStationByDistance = hamming.getDistanceArray(enterHammingDistSlider.getValue());
 			 new ShowStationByDistanceFrame(showStationByDistance, enterHammingDistSlider.getValue());
+		 });
+		 
+		 // check if Do It button was clicked and show new window with creative aspirations
+		 doSomething.addActionListener((e) -> {
+			 
 		 });
 		 
 		this.pack();
@@ -200,6 +211,9 @@ public class HammingDistanceCalculatorFrame extends JFrame
 		
 		addStationBox.add(addStation);
 		addStationBox.add(addStationTextBox);
+		
+		beCreative.add(doSomethingCreative);
+		beCreative.add(doSomething);
 	}
 	
 	/**
