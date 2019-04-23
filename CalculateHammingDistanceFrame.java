@@ -68,7 +68,7 @@ public class CalculateHammingDistanceFrame extends JFrame
 	{
 		super("Hamming Distances");
 		
-		this.setSize(300, 200);
+		this.setSize(375, 200);
 		this.setLayout(new GridLayout(1, 1));
 		
 		// add lanels and text to panels

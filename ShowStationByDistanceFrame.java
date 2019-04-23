@@ -49,7 +49,6 @@ public class ShowStationByDistanceFrame extends JFrame
 		mainPanel.add(scroll);
 		this.add(mainPanel);
 		
-		this.pack();
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		this.setVisible(true);
 	}
