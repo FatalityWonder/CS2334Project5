@@ -56,7 +56,9 @@ public class HammingDistanceCalculatorFrame extends JFrame
 	// contains Button and Text Field to add station
 	JPanel addStationBox = new JPanel(new GridLayout(1, 2));
 	// contains JLabel and JButton for creative action
-	JPanel beCreative = new JPanel(new GridLayout(2, 1)) {public Insets getInsets() {return new Insets(15, 15, 15, 15);}};
+	JPanel beCreative = new JPanel(new GridLayout(3, 1)) {public Insets getInsets() {return new Insets(15, 15, 15, 15);}};
+	// contains two text fields for the creative bouncing number
+	JPanel creativeFields = new JPanel(new GridLayout(1, 2));
 
 	//================================================================================================================
 	// Components for Operation
@@ -69,7 +71,7 @@ public class HammingDistanceCalculatorFrame extends JFrame
 	// Label for the Dropdown menu to select which Station to get hamming distance for
 	JLabel compareWithLabel = new JLabel("Compare With: ");
 	// Label for the Do it Button
-	JLabel doSomethingCreative = new JLabel("Do Something Creative!!");
+	JLabel doSomethingCreative = new JLabel("Enter a Station ID in each field");
 	// Text Field for the current value on the slider, with default value 2
 	JTextField enterHDTextBox = new JTextField("2");
 	// Text box to enter station to add, default text is "ZERO"
@@ -83,7 +85,11 @@ public class HammingDistanceCalculatorFrame extends JFrame
 	// Button to show all stations with selected distance on slider with the selected station on the dropdown
 	JButton showHammingDistStations = new JButton("Show Station");
 	// Button that does something creative
-	JButton doSomething = new JButton("Do it!");
+	JButton doSomething = new JButton("Do Something Creative!");
+	// left text field for the creative thing
+	JTextField stationLeft = new JTextField("NRMN");
+	// right text field for the creative thing
+	JTextField stationRight = new JTextField("YUKO");
 	
 	/**
 	 * Constructs GUI components for the Hamming Distance Calculator. Has the ability to add new stations, compare all stations in
@@ -155,7 +161,9 @@ public class HammingDistanceCalculatorFrame extends JFrame
 		 
 		 // check if Do It button was clicked and show new window with creative aspirations
 		 doSomething.addActionListener((e) -> {
-			 
+			 String st1 = stationLeft.getText();
+			 String st2 = stationRight.getText();
+			 new DoSomethingAmazing(st1, st2);
 		 });
 		 
 		this.pack();
@@ -213,7 +221,11 @@ public class HammingDistanceCalculatorFrame extends JFrame
 		addStationBox.add(addStationTextBox);
 		
 		beCreative.add(doSomethingCreative);
+		beCreative.add(creativeFields);
 		beCreative.add(doSomething);
+		
+		creativeFields.add(stationLeft);
+		creativeFields.add(stationRight);
 	}
 	
 	/**
