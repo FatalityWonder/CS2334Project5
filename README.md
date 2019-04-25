@@ -9,3 +9,5 @@ Now that I had given myself a layout to start with, I had to figure out what com
 The action listeners were quite simple to set up, even for the ones with a new frame since it just is a constructor to a new frame.
 
 Moving on to the logic, i knew i would have to get the data from a file, as well as calculate the hamming distance, so I created one class to read all of the stations from a file, as well as another class to calculate the hamming distances.
+
+For the creative idea, I was lost, so I decided to make an animated number bouncing within a frame while changing size. That number is the hamming distance between two input numbers
