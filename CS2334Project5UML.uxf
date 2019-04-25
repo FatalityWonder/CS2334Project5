@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>0</y>
+      <w>510</w>
+      <h>750</h>
+    </coordinates>
+    <panel_attributes>::HammingDistanceCalculatorFrame
+--
+-FILE_NAME = "Mesonet.txt": String
+-FRAME_WIDTH = 700: int
+-FRAME_HEIGHT = 800: int
+~allStations = new MesoStations(FILE_NAME): MesoStations
+~stations = arrayListToArray(allStations.getStations()): String[]
+~sliderShowStation = new JPanel(new GridLayout(3, 1)) {&#13;
+&#13;
+    public Insets getInsets() {&#13;
+        return new Insets(15, 15, 15, 15);&#13;
+    }&#13;
+}: JPanel
+~compareAdd = new JPanel(new GridLayout(3, 1)): JPanel
+~enterDistBox = new JPanel(new GridLayout(1, 2)): JPanel
+~compareWith = new JPanel(new GridLayout(1, 2)): JPanel
+~addStationBox = new JPanel(new GridLayout(1, 2)): JPanel
+~beCreative = new JPanel(new GridLayout(3, 1)) {&#13;
+&#13;
+    public Insets getInsets() {&#13;
+        return new Insets(15, 15, 15, 15);&#13;
+    }&#13;
+}: JPanel
+~creativeFields = new JPanel(new GridLayout(1, 2)): JPanel
+~enterHammingDistSlider = new JSlider(1, 4, 2): JSlider
+~enterHammingDist = new JLabel("Enter Hamming Dist:"): JLabel
+~compareWithLabel = new JLabel("Compare With: "): JLabel
+~doSomethingCreative = new JLabel("Enter a Station ID in each field"): JLabel
+~enterHDTextBox = new JTextField("2"): JTextField
+~addStationTextBox = new JTextField("ZERO"): JTextField
+~stationDropDown = new JComboBox&lt;String&gt;(stations): JComboBox&lt;String&gt;
+~calculateHammingDist = new JButton("Calculate HD"): JButton
+~addStation = new JButton("Add Station"): JButton
+~showHammingDistStations = new JButton("Show Station"): JButton
+~doSomething = new JButton("Do Something Creative!"): JButton
+~stationLeft = new JTextField("NRMN"): JTextField
+~stationRight = new JTextField("YUKO"): JTextField
+--
++HammingDistanceCalculatorFrame(): ctor
+-arrayListToArray(ArrayList&lt;String&gt; arrayList): String[]
+-setComponentData(): void
+-addComponentsToPanels(): void
+-setSliderData(): void
++main(String[] args): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>530</x>
+      <y>0</y>
+      <w>380</w>
+      <h>450</h>
+    </coordinates>
+    <panel_attributes>::CalculateHammingDistanceFrame
+--
+~main = new JPanel(new GridLayout(5, 1)) {&#13;
+&#13;
+    public Insets getInsets() {&#13;
+        return new Insets(15, 15, 15, 15);&#13;
+    }&#13;
+}: JPanel
+~distance0 = new JPanel(new GridLayout(1, 2)): JPanel
+~distance1 = new JPanel(new GridLayout(1, 2)): JPanel
+~distance2 = new JPanel(new GridLayout(1, 2)): JPanel
+~distance3 = new JPanel(new GridLayout(1, 2)): JPanel
+~distance4 = new JPanel(new GridLayout(1, 2)): JPanel
+~distance0Label = new JLabel("Distance 0"): JLabel
+~distance1Label = new JLabel("Distance 1"): JLabel
+~distance2Label = new JLabel("Distance 2"): JLabel
+~distance3Label = new JLabel("Distance 3"): JLabel
+~distance4Label = new JLabel("Distance 4"): JLabel
+~distance0Text = new JTextField("0"): JTextField
+~distance1Text = new JTextField("0"): JTextField
+~distance2Text = new JTextField("0"): JTextField
+~distance3Text = new JTextField("0"): JTextField
+~distance4Text = new JTextField("0"): JTextField
+--
++CalculateHammingDistanceFrame(int[] allDistances): ctor
+-addLabelsAndText(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>920</x>
+      <y>0</y>
+      <w>430</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>::HammingDist
+--
+-StID: String
+-meso: MesoStations
+-distance1: ArrayList&lt;String&gt;
+-distance2: ArrayList&lt;String&gt;
+-distance3: ArrayList&lt;String&gt;
+-distance4: ArrayList&lt;String&gt;
+-numDist: int[]
+--
++HammingDist(MesoStations meso, String StID): ctor
+-findHammingDistances(String station): void
+-addHammingArray(int currDist, String currStation): void
++calculateHammingDistance(String station, String currStation): int
++getNumDist(): int[]
++getDistanceArray(int value): ArrayList&lt;String&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>760</y>
+      <w>560</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>::ShowStationByDistanceFrame
+--
+~mainPanel = new JPanel() {&#13;
+&#13;
+    public Insets getInsets() {&#13;
+        return new Insets(15, 15, 15, 15);&#13;
+    }&#13;
+}: JPanel
+~stations = new JTextArea(20, 10): JTextArea
+~scroll = new JScrollPane(stations): JScrollPane
+--
++ShowStationByDistanceFrame(ArrayList&lt;String&gt; stationByDistance, int distance): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>580</x>
+      <y>760</y>
+      <w>270</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>::MesoStations
+--
+-stations: ArrayList&lt;String&gt;
+-fileName: String
+--
++MesoStations(String fileName): ctor
+-getStationsFromFile(): ArrayList&lt;String&gt;
++getStations(): ArrayList&lt;String&gt;
++addStation(String station): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>860</x>
+      <y>760</y>
+      <w>330</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>::DoSomethingAmazing
+--
+--
++DoSomethingAmazing(String st1, String st2): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>280</y>
+      <w>390</w>
+      <h>490</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;470.0;370.0;10.0</additional_attributes>
+  </element>
+</diagram>
